@@ -2,7 +2,7 @@
 
 ##string experssion
 
-a=abc
+a=abc1
 if [ $a = "abc" ]
 then
   echo OK
