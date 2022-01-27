@@ -16,3 +16,8 @@ if [ $a != "abc" ]; then
 if [ -z "$b" ]; then
   echo  B is empty/ Non declare variable
   fi
+
+  a=100
+  if [ $a -eq 100 ]; then
+    echo a is ok
+    fi
