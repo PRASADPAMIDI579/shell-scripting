@@ -8,7 +8,7 @@ then
   echo OK
 fi
 
-if [ $a !=abc ]; then
+if [ $a != "abc" ]; then
   echo NOTOK
 
   fi
