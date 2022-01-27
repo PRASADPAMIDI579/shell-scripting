@@ -9,5 +9,5 @@ DATE=2022-01-27
 echo Good morning, today date is $DATE
 
 ##command substution
-DATE=$(date %f)
+DATE=$(date %F)
 echo Good morning, today date is $DATE
