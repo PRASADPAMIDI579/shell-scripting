@@ -35,4 +35,4 @@
 #```
 
 echo "installing nginx"
-yum install nginx -y >/tmp/roboshop.1og
+yum install nginx -y >/tmp/roboshop.log
