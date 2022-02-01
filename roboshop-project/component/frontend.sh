@@ -36,11 +36,17 @@
 
 
 #...  > redirecting a file
-echo "installing nginx"
-yum install nginx -y >/tmp/roboshop.log
 
+LOG_FILE=/tmp/roboshop.log
+#echo "installing nginx"
+#yum install nginx -y >/tmp/roboshop.log
+
+echo "installing nginx"
+yum install nginx -y &>>$LOG_FILE
 
 #...   >> appending a file
-echo "Download frontend content"
-curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
+#echo "Download frontend content"
+#curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
 
+echo "Download frontend content"
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>$LOG_FILE
