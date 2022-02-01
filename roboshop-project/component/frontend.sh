@@ -55,6 +55,6 @@ curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/fron
 echo "clean the old content"
 rm -rf /usr/share/nginx/html/* &>>LOG_FILE
 
-echo"Extract the front content"
+echo "Extract the front content"
 cd /usr/share/nginx/html/ $>>LOG_FILE
 unzip /tmp/frontend.zip $>>LOG_FILE
