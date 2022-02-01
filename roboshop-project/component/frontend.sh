@@ -56,5 +56,5 @@ echo "clean the old content"
 rm -rf /usr/share/nginx/html/* &>>LOG_FILE
 
 echo"Extract the front content"
-/usr/share/nginx/html/ $>>LOG_FILE
+cd /usr/share/nginx/html/ $>>LOG_FILE
 unzip /tmp/frontend.zip $>>LOG_FILE
