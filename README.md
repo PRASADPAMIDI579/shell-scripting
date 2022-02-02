@@ -2,6 +2,8 @@
 
 #sed editior
 
+bash
+
 # sed with -i edit the file
 #sed without -i its print the change on output
 
@@ -19,4 +21,7 @@ sed -i -e '1d' -e '/root/ d' sample.txt
 #add lines
 sed -i -e '1 i HELLO WORLD' sample.txt
 sed -i -e '/root/ i HELLO WORLD' sample.txt
+sed -i -e '1 a Hello World' sample.txt
+sed -i -e '1 c Hello World' sample.txt
+````
 
