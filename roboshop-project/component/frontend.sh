@@ -37,10 +37,11 @@
 
 #...  > redirecting a file
 
-LOG_FILE=/tmp/roboshop.log
-rm -f $LOG_FILE
+
 #echo "installing nginx"
 #yum install nginx -y >/tmp/roboshop.log
+
+source componet/common.sh
 
 echo "installing nginx"
 yum install nginx -y &>>$LOG_FILE
