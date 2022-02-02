@@ -12,3 +12,11 @@
 
 sed -i -e 's/root/ROOT/g' -e 's/admin/ADMIN/g' sample.txt
 
+# Delete Lines
+
+sed -i -e '1d' -e '/root/ d' sample.txt
+
+#add lines
+sed -i -e '1 i HELLO WORLD' sample.txt
+sed -i -e '/root/ i HELLO WORLD' sample.txt
+
