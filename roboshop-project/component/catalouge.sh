@@ -75,5 +75,19 @@ cp -r catalouge-main /home/roboshop/catalouge &>>LOG_FILE
 echo " install nodeJS dependencies "
 npm install &>>LOG_FILE
 
-chown roboshop:roboshop /home/roboshop/ -R
+chown roboshop:roboshop /home/roboshop/ -R &>>LOG_FILE
+
+echo " update systemd file"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/'
+/home/roboshop/catalouge/systemd.service &>>LOG_FILE
+
+echo "setup catalouge SystemD file"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>LOG_FILE
+
+echo " start catalouge"
+systemctl daemon-reload &>>LOG_FILE
+systemctl start catalogue &>>LOG_FILE
+systemctl enable catalogue &>>LOG_FILE
+
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/'
 
