@@ -54,3 +54,13 @@ curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -  &>>LOG_FILE
 
 echo " installing nodejs "
 yum install nodejs gcc-c++ -y
+
+echo " create app user"
+useradd roboshop &>>LOG_FILE
+
+echo " download the catalouge code "
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>LOG_FILE
+
+
+
+
