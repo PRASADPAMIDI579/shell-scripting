@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTANCE_NAME= $1
+INSTANCE_NAME=$1
 if [ -z "${INSTANCE_NAME}" ]; then
   echo -e "\e[1;32mInstance Name Argument is needed\e[0m"
   exit
