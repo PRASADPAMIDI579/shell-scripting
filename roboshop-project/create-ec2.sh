@@ -16,4 +16,4 @@ if [ -z "${AMI_ID}" ]; then
     exit
   fi
 
-aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME} }]"
+aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance,Tags=[{key=Name,Value=${INSTANCE_NAME}}]"
