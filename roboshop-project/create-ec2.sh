@@ -8,4 +8,4 @@ if [ -z "${AMI_ID}" ]; then
     echo -e "\e[1;33mAMI ID = ${AMI_ID}\e[0m"
   fi
 
-aws run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text
+aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text
