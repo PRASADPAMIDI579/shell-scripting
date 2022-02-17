@@ -18,6 +18,7 @@ if [ -z "${AMI_ID}" ]; then
 PRIVATE_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=frontend --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 if [ -z "${PRIVATE_IP}" ]; then
+aws ec2 describe-security-groups --filter Name=group-name,Values=allow-all-ports --query
 aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]"
 
 else
