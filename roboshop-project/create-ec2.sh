@@ -17,4 +17,4 @@ if [ -z "${AMI_ID}" ]; then
 
 
 
-aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{key=Name,Values=${INSTANCE_NAME}}]"
+aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{key=Name,Value=${INSTANCE_NAME}}]"
