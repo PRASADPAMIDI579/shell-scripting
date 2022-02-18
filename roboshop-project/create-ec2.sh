@@ -1,5 +1,8 @@
 #!/bin/bash
 
+LOG=/tmp/instance-create.log
+rm -f $LOG
+
 INSTANCE_NAME=$1
 if [ -z "${INSTANCE_NAME}" ]; then
   echo -e "\e[1;31mInstance Name argument is needed\e[0m"
@@ -26,9 +29,21 @@ SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=Aws-Pr
     exist 1
   fi
 
-    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]"
-
+    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehaviour=stop,SpotInstanceType=presistent}" --secutity-group-ids"${SG_ID}" &>>$LOG
+    echo -e "\e[1m Instance Creatred"
   else
     echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
     exit
 fi
+
+  IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
+  echo '{
+              "Comment": "CREATE/DELETE/UPSERT a record ",
+              "Changes": [{
+              "Action": "UPSERT",
+                          "ResourceRecordSet": {
+                                      "Name": "DNSNAME.roboshop.internal",
+                                      "Type": "A",
+                                      "TTL": 300,
+                                   "ResourceRecords": [{ "Value": "IPADDRESS"}]
+  }}]
