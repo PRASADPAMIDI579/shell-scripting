@@ -22,7 +22,7 @@ PRIVATE_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=${INSTANC
 
 if [ -z "${PRIVATE_IP}" ]; then
 
-    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance,
+    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag_specifications "ResourceType=instance,
     Tags=[{key=Name,Value=${INSTANCE_NAME}}]"
  #  echo -e "\e[1m Instance Created"
   else
