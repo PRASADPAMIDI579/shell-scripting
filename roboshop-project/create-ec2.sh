@@ -24,7 +24,7 @@ if [ -z "${PRIVATE_IP}" ]; then
 
     aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance,
     Tags=[{Key=Name,Value=${INSTANCE_NAME}}]"
- #  echo -e "\e[1m Instance Created"
+      echo -e "\e[1m Instance Created"
   else
     echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
     exit
