@@ -33,7 +33,7 @@ Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" "ResourceType=spot-instances-request,T
  --security-group-ids "${SG_ID}"
 
 
-      echo -e "\e[1m Instance Created"
+    #echo -e "\e[1m Instance Created"
   else
     echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
     exit
