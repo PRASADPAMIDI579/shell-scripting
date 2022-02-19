@@ -29,8 +29,8 @@ SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=Aws-Pr
     exist 1
   fi
 
-    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehaviour=stop,SpotInstanceType=presistent}" --secutity-group-ids"${SG_ID}" &>>$LOG
-    echo -e "\e[1m Instance Creatred"
+    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehaviour=stop,SpotInstanceType=persistent}" --secutity-group-ids"${SG_ID}" &>>$LOG
+    echo -e "\e[1m Instance Created"
   else
     echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
     exit
@@ -46,4 +46,4 @@ fi
                                       "Type": "A",
                                       "TTL": 300,
                                    "ResourceRecords": [{ "Value": "IPADDRESS"}]
-  }}]
+  }}]'
