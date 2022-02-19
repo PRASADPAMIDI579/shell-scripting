@@ -1,7 +1,7 @@
 #!/bin/bash
 
-LOG=/tmp/instance-create.log
-rm -f $LOG
+#LOG=/tmp/instance-create.log
+#rm -f $LOG
 
 INSTANCE_NAME=$1
 if [ -z "${INSTANCE_NAME}" ]; then
@@ -18,7 +18,7 @@ if [ -z "${AMI_ID}" ]; then
     echo -e "\e[1;33mAMI ID = ${AMI_ID}\e[0m"
   fi
 
-PRIVATE_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=frontend --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
+PRIVATE_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values={INSTANCE_NAME} --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 
 if [ -z "${PRIVATE_IP}" ]; then
 
