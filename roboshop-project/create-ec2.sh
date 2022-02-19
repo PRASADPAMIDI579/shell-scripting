@@ -22,28 +22,10 @@ PRIVATE_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=frontend 
 
 if [ -z "${PRIVATE_IP}" ]; then
 
-SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=Aws-Practice Allow-access --query "SecurityGroups[*].GroupId" --output text)
-
-  if [ -z "${SG_ID}" ];then
-    echo -e "\e[1;32m Security Group does not exit"
-    exist 1
-  fi
-
-    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]" --instance-market-options "MarketType=spot,SpotOptions={InstanceInterruptionBehaviour=stop,SpotInstanceType=persistent}" --secutity-group-ids"${SG_ID}" &>>$LOG
+    aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --output text --tag-specifications "ResourceType=instance
     echo -e "\e[1m Instance Created"
   else
     echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
     exit
 fi
 
-  IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-  echo '{
-              "Comment": "CREATE/DELETE/UPSERT a record ",
-              "Changes": [{
-              "Action": "UPSERT",
-                          "ResourceRecordSet": {
-                                      "Name": "DNSNAME.roboshop.internal",
-                                      "Type": "A",
-                                      "TTL": 300,
-                                   "ResourceRecords": [{ "Value": "IPADDRESS"}]
-  }}]'
