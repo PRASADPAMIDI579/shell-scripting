@@ -30,7 +30,7 @@ else
   echo "Instance ${INSTANCE_NAME} is already exists, Hence not creating"
 fi
 
-IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text
+IPADDRESS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${INSTANCE_NAME}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
 echo '{
             "Comment": "CREATE/DELETE/UPSERT a record ",
             "Changes": [{
