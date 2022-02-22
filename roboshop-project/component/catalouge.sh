@@ -67,7 +67,7 @@ STAT $?
 
 echo " extract catalouge file"
 cd /tmp
-unzip -o /tmp/catalouge.zip &>>LOG_FILE
+unzip -o tmp/catalouge.zip &>>LOG_FILE
 STAT $?
 
 echo " clean old content "
