@@ -41,7 +41,7 @@
 #echo "installing nginx"
 #yum install nginx -y >/tmp/roboshop.log
 
-source common.sh
+source component/common.sh
 
 echo "installing nginx"
 yum install nginx -y &>>$LOG_FILE
