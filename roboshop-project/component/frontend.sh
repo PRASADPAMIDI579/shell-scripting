@@ -61,7 +61,7 @@ STAT $?
 
 echo "Extract the front content"
 cd /tmp
-unzip -o /frontend.zip &>>LOG_FILE
+unzip -o frontend.zip &>>LOG_FILE
 STAT $?
 
 
