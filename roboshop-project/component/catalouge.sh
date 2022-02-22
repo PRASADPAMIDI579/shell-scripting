@@ -58,7 +58,7 @@ yum install nodejs gcc-c++ -y
 STAT $?
 
 echo " create app user"
-useradd roboshop &>>LOG_FILE
+useradd RoboShop &>>LOG_FILE
 STAT $?
 
 echo " download the catalouge code "
