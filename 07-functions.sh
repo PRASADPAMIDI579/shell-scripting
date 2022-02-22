@@ -21,8 +21,9 @@ b=10
 
 SAMPLE1(){
   echo First Argument in Function =$1
+  return 1
 }
 
 echo First argument in main program =$1
 SAMPLE1 ABC
-
+echo $?
