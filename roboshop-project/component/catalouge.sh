@@ -65,7 +65,7 @@ echo " download the catalouge code "
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>LOG_FILE
 STAT $?
 
-echo " extract catalouge file"
+echo " extract catalouge file "
 cd /tmp
 unzip -o /tmp/catalouge.zip &>>LOG_FILE
 STAT $?
