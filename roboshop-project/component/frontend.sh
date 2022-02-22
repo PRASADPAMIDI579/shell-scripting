@@ -53,59 +53,28 @@ STAT $?
 
 echo "Download frontend content"
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>$LOG_FILE
-if [ $? -eq 0 ]; then                   ## -eq is equal to
-  echo -e "\e[1;32m SUCCESS\e[0m"
-  else
-    echo -e "\e[1;33m FAILED\e[0m"
-    exit
-    fi
+STAT $?
 
 echo "clean the old content"
 rm -rf /usr/share/nginx/html/* &>>LOG_FILE
-if [ $? -eq 0 ]; then                   ## -eq is equal to
-  echo -e "\e[1;32m SUCCESS\e[0m"
-  else
-    echo -e "\e[1;33m FAILED\e[0m"
-    exit
-    fi
-
+STAT $?
 
 echo "Extract the front content"
 cd /tmp
 unzip -o /frontend.zip &>>LOG_FILE
-if [ $? -eq 0 ]; then                   ## -eq is equal to
-  echo -e "\e[1;32m SUCCESS\e[0m"
-  else
-    echo -e "\e[1;33m FAILED\e[0m"
-    exit
-    fi
+STAT $?
 
 
 echo "copy extracted content to nginx path"
 cp -r frontend-main/static/* /usr/share/nginx/html/ &>>LOG_FILE
-if [ $? -eq 0 ]; then                   ## -eq is equal to
-  echo -e "\e[1;32m SUCCESS\e[0m"
-  else
-    echo -e "\e[1;33m FAILED\e[0m"
-    exit
-    fi
+STAT $?
 
 
 echo "copy nginx roboshop config"
 cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>LOG_FILE
-if [ $? -eq 0 ]; then                   ## -eq is equal to
-  echo -e "\e[1;32m SUCCESS\e[0m"
-  else
-    echo -e "\e[1;33m FAILED\e[0m"
-    exit
-fi
+STAT $?
 
 echo "start nginx service"
 systemctl enable nginx &>>LOG_FILE
 systemctl start nginx >>LOG_FILE
-if [ $? -eq 0 ]; then                   ## -eq is equal to
-  echo -e "\e[1;32m SUCCESS\e[0m"
-  else
-    echo -e "\e[1;33m FAILED\e[0m"
-    exit
-fi
+STAT $?
