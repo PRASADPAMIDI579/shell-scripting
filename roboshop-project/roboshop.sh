@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ID=$(id -u)
-if [ $ID -ne 0 ]; then
+if [ $ID -ne 0 ]; then  # -ne is not equal to
   echo -e "\e[1;33m you shouls be a root user to execute the script \e[0m"
   exit
   fi
