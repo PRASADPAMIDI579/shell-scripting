@@ -2,7 +2,7 @@
 
 ID=$(id -u)
 if [ $ID -ne 0 ]; then  # -ne is not equal to
-  echo -e "\e[1;33m you shouls be a root user to execute the script \e[0m"
+  echo -e "\e[1;33m you should be a root user to execute the script \e[0m"
   exit 1
   fi
 
