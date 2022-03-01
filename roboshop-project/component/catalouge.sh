@@ -57,7 +57,7 @@ echo " installing nodejs "
 yum install nodejs gcc-c++ -y
 STAT $?
 
-echo " create app user"
+echo " create app user "
 useradd roboshop &>>$LOG_FILE
 STAT $?
 
