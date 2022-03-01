@@ -79,6 +79,7 @@ cp -r catalouge-main /home/roboshop/catalouge &>>LOG_FILE
 STAT $?
 
 echo " install nodeJS dependencies "
+cd /home/roboshop/catalouge
 npm install &>>LOG_FILE
 STAT $?
 
