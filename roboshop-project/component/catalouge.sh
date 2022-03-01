@@ -66,7 +66,7 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 STAT $?
 
 echo " extract catalouge file "
-cd /tmp
+cd /tmp/
 unzip -o /tmp/catalouge.zip &>>LOG_FILE
 STAT $?
 
