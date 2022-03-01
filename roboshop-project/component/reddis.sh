@@ -36,4 +36,9 @@ if [ -f /etc/redis.conf ]; then
     fi
 
 STAT $?
+
+echo "start redis"
+systemctl enable redis &>>$LOG_FILE
+systemctl start redis &>>$LOG_FILE
+STAT $?
       
